@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Santiago Martinez</title>
+
+  <style>
+    :root{
+      --ink:#111;
+      --muted:#444;
+      --paper:#fbfaf6;
+      --line:#e7e3d9;
+      --rule:#cfc8bb;
+      --accent:#0f3d2e;
+      --maxw: 1080px;
+      --sidebar: 280px;
+    }
+
+    /* old-school paper + faint grid */
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        linear-gradient(var(--paper), var(--paper)),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.035), rgba(0,0,0,0.035) 1px, transparent 1px, transparent 24px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02) 1px, transparent 1px, transparent 24px);
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.55;
+    }
+
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{
+      max-width: var(--maxw);
+      margin: 34px auto;
+      padding: 0 18px;
+      display: grid;
+      grid-template-columns: var(--sidebar) 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    /* LEFT SIDEBAR */
+    aside{
+      position: sticky;
+      top: 18px;
+      align-self: start;
+
+      border: 1px solid var(--rule);
+      background: rgba(255,255,255,0.72);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 18px 16px;
+    }
+
+    .photo{
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02));
+      display: grid;
+      place-items: center;
+    }
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      filter: grayscale(25%) contrast(1.05);
+    }
+    .placeholder{
+      font-size: 12px;
+      color: var(--muted);
+      padding: 10px;
+      text-align: center;
+    }
+
+    .name{
+      margin: 14px 0 4px 0;
+      font-size: 26px;
+      letter-spacing: 0.2px;
+    }
+    .tagline{
+      margin: 0 0 10px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .eq{
+      font-family: "Courier New", ui-monospace, monospace;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin: 10px 0 14px 0;
+    }
+
+    .blocktitle{
+      margin: 16px 0 8px 0;
+      font-size: 12px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .affil{
+      margin: 0;
+      padding-left: 16px;
+      color: var(--ink);
+      font-size: 14px;
+    }
+    .affil li{ margin: 6px 0; }
+    .affil span{ color: var(--muted); }
+
+    nav{
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    nav a{
+      padding: 6px 8px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+    }
+    nav a:hover{
+      border-color: var(--line);
+      background: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+
+    .quick{
+      font-size: 13px;
+      color: var(--muted);
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    /* RIGHT CONTENT */
+    main{
+      border: 1px solid var(--rule);
+      background: rgba(255,255,255,0.72);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 26px 26px 18px;
+    }
+
+    section{ margin-top: 22px; }
+    h2{
+      font-size: 16px;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .rule{
+      height:1px;
+      background: var(--line);
+      margin: 16px 0;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.6);
+      padding: 14px 14px 12px;
+    }
+
+    .small{ color: var(--muted); font-size: 14px; }
+
+    ul{ margin: 8px 0 0 18px; padding: 0; }
+    li{ margin: 6px 0; }
+
+    .list{
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    footer{
+      margin-top: 26px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* MOBILE */
+    @media (max-width: 860px){
+      .wrap{ grid-template-columns: 1fr; }
+      aside{ position: relative; top: auto; }
+      main{ padding: 20px 18px 16px; }
+      .grid2{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- LEFT FIXED BAR -->
+    <aside>
+      <div class="photo">
+        <img src="me.jpeg" alt="Portrait of Santiago Martinez"
+             onerror="this.remove(); this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>Add <b>me.jpeg</b> next to <b>index.html</b><br/>or update the image path.</div>';">
+      </div>
+
+      <h1 class="name">Santiago Martinez</h1>
+      <p class="tagline">Mathematics · Physics · Computation</p>
+
+      <div class="eq">∫_{∂M} ω = ∫_{M} dω</div>
+      <div class="blocktitle">Affiliations</div>
+      <ul class="affil">
+        <li>Université Paris-Saclay <span>(MsC)</span></li>
+        <li>Sapienza University of Rome <span>(MsC)</span></li>
+        <li>Universidad Nacional de Colombia <span>(BsC)</span></li>
+      </ul>
+
+      <div class="blocktitle">Navigation</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#cv">CV</a>
+        <a href="#events">Events</a>
+        <a href="#projects">Projects</a>
+        <a href="#interests">Interests</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="blocktitle">Links</div>
+      <div class="quick">
+        <div><a href="mailto:santiago.martinez-saenz@universite-paris-saclay.fr">Email</a></div>
+        <!-- Add these when you have them -->
+        <!-- <div><a href="CV.pdf">CV (PDF)</a></div> -->
+        <!-- <div><a href="https://github.com/USERNAME">GitHub</a></div> -->
+        <!-- <div><a href="https://www.linkedin.com/in/USERNAME/">LinkedIn</a></div> -->
+      </div>
+    </aside>
+
+    <!-- RIGHT CONTENT -->
+    <main>
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          I work at the intersection of mathematics, physics, and computation, with a focus on understanding the mathematical structures underlying physical models and their numerical approximations. My research explores functional-analytic perspectives on stability and limits in modeling, as well as topological and geometric ideas for Learning algorithms. I am passionate about developing clean scientific software and applying mathematical insights to real-world problems in sciences.
+        </p>
+        <p class="small">
+          My favourite mathematician is Georg Cantor, and my favourite physicist is Emmy Noether. I am currently based in Europe and open to research collaborations and PhD opportunities.
+        </p>
+      </section>
+
+      <div class="rule"></div>
+
+      <section id="research">
+        <h2>Research</h2>
+        <div class="grid2">
+          <div class="card">
+            <b>Analysis and operator viewpoints</b>
+            <p class="small">
+              Functional-analytic structure behind models, limits, and stability of estimates.
+            </p>
+          </div>
+          <div class="card">
+            <b>Topology</b>
+            <p class="small">
+              Topological properties and their applications in mathematical and physical models.
+            </p>
+          </div>
+        </div>
+
+        <ul>
+          <li>Numerical analysis and structured approximations</li>
+          <li>Geometry/topology in physical modeling</li>
+          <li>Physics-informed ML with constraints</li>
+        </ul>
+      </section>
+
+      <section id="cv">
+        <h2>CV</h2>
+        <p class="small">
+          Add your CV as a PDF in this repo (e.g., <code>CV.pdf</code>) and link it in the sidebar.
+        </p>
+        <ul class="list">
+          <li><b>Education:</b> Université Paris-Saclay (MsC-current), Sapienza (MSc), UNAL (BSc)</li>
+          <li><b>Skills:</b> Math, scientific computing, modeling, simulation workflows</li>
+        </ul>
+      </section>
+
+      <section id="events">
+        <h2>Events and Attendance</h2>
+        <div class="card">
+          <ul class="list">
+            <li><b>2026</b> — JUAS: Joint Universities Accelerators School- ESI Archamps.</li>
+            <li><b>2025</b> — TOSCA: Techniques of Oversight in Scientific project Administration.</li>
+            <li><b>2023</b> — COMHEP: Colombian High Energy Physics School. Speaker.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid2">
+          <div class="card">
+            <b>2026-GANIL(master's thesis): Machine learning exploratory modeling of collective effects in High Energy Booster for FCC-ee. Supervisor: Dr. Adnan Ghribi, Dr. Hayg Guler.</b>
+            <p class="small">
+                Exploratory modeling of nonlinear optics and collective effects in the High Energy Booster (HEB) for the Future Circular Collider (FCC-ee) using machine learning techniques, mainly operator learning and surrogate modeling, with a focus on developing predictive models and simulation tools to analyze beam dynamics and optimize accelerator performance, as well as quantify the uncertainties associated with these models.
+            </p>
+          </div>
+          <div class="card">
+            <b>2023-IJCLaB : Resolution effects for FCC-ee Compton polarimetry. Supervisor: Dr. Aurèlien Martens.</b>
+            <p class="small">
+                Study of resolution effects in the context of Compton polarimetry for the Future Circular Collider (FCC-ee) by developing a numerical model and simulation framework to analyze the impact of detector resolution on polarization measurements.
+            </p>
+          </div>
+          <div class="card">
+            <b>2023-UNAL(bachelor's thesis): Heavy Neutral Lepton model extension for the standard model, simulation and analysis. Supervisor: Dr. Carlos Sandoval </b>
+            <p class="small">
+                Study of a Heavy Neutral Lepton (HNL) extension to the Standard Model of particle physics, including theoretical modeling of the production mechanisms, couplings to standard neutrinos, numerical simulation, and data analysis of potential experimental signatures in high-energy physics experiments.
+            </p>
+          </div>
+          <div class="card">
+            <b>2025-Sapienza: Low-Rank Decomposition for Phonon-Phonon interactions. Supervisor: Dr. Lorenzo Monacelli.</b>
+            <p class="small">
+                Development of a low-rank decomposition method for supervised Learning approachesto efficiently compute phonon-phonon interactions in materials, with applications to thermal conductivity and material design.
+            </p>
+          </div>
+          <div class="card">
+            <b>2022-UNAL: Computational Differential Geometry for integrable systems in Hamiltonian mechanics. Supervisors: Dr. Iván Contreras, Dr. Nicolás Martinez Alba</b>
+            <p class="small">
+                Implementation of computational tools for differential geometry to analyze integrable systems in Hamiltonian mechanics, including symplectic structures and conserved quantities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="interests">
+        <h2>Interests</h2>
+        <ul>
+          <li>Functional analysis, topology, spectral ideas</li>
+          <li>Mathematical physics and modeling</li>
+          <li>Scientific software and clean computation</li>
+        </ul>
+      </section>
+
+      <div class="rule"></div>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          Email:
+          <a href="mailto:santiago.martinez-saenz@universite-paris-saclay.fr">santiago.martinez-saenz@universite-paris-saclay.fr</a>
+        </p>
+        <p class="small">
+          Based in Europe. Open to research collaborations and PhD opportunities.
+        </p>
+      </section>
+
+      <footer>
+        <div>© <span id="y"></span> Santiago Martinez</div>
+        <div class="small">Last updated: <span id="d"></span></div>
+      </footer>
+    </main>
+
+  </div>
+
+  <script>
+    const now = new Date();
+    document.getElementById("y").textContent = now.getFullYear();
+    document.getElementById("d").textContent =
+      now.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"2-digit" });
+  </script>
+</body>
+</html>
