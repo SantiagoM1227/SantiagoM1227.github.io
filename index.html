@@ -268,10 +268,13 @@
       font-size: 24px;
     }
 
+    .explorer-shell{
+      height: 100%;
+    }
+
     .explorer-main{
-      background: linear-gradient(180deg, #fdfefe 0%, #f6f9ff 100%);
-      padding: 10px;
-      overflow: auto;
+      height: 100%;
+      width: 100%;
     }
 
     .explorer-head{
@@ -802,10 +805,7 @@
         transform: none;
       }
       .side-panel .content{ height: auto; }
-      .explorer-shell{
-        display: block;
-        height: 100%;
-      }
+      
       .gadget-body{
         grid-template-columns: 140px 1fr;
       }
@@ -977,7 +977,7 @@
 
       <div class="win" id="win-cv" style="left: 220px; top: 44px; display:none;">
         <div class="titlebar" data-drag="win-cv">
-          <div class="title">🗂️ CV</div>
+          <div class="title"><img src="cv-logo.png" alt="" class="menu-icon"> CV</div>
           <div class="controls">
             <button class="btn min" data-min="win-cv" title="Minimize">_</button>
             <button class="btn" data-close="win-cv" title="Close">×</button>
@@ -994,7 +994,7 @@
 
       <div class="win" id="win-events" style="left: 240px; top: 170px; display:none;">
         <div class="titlebar" data-drag="win-events">
-          <div class="title">📌 Events</div>
+          <div class="title"><img src="events-logo.png" alt="" class="menu-icon"> Events</div>
           <div class="controls">
             <button class="btn min" data-min="win-events" title="Minimize">_</button>
             <button class="btn" data-close="win-events" title="Close">×</button>
@@ -1011,7 +1011,7 @@
 
       <div class="win" id="win-projects" style="left: 290px; top: 90px; display:none;">
         <div class="titlebar" data-drag="win-projects">
-          <div class="title">🧪 Projects</div>
+          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> Projects</div>
           <div class="controls">
             <button class="btn min" data-min="win-projects" title="Minimize">_</button>
             <button class="btn" data-close="win-projects" title="Close">×</button>
@@ -1056,7 +1056,7 @@
 
       <div class="win" id="win-interests" style="left: 360px; top: 210px; display:none;">
         <div class="titlebar" data-drag="win-interests">
-          <div class="title">★ Interests</div>
+          <div class="title"><img src="interests-logo.png" alt="" class="menu-icon"> Interests</div>
           <div class="controls">
             <button class="btn min" data-min="win-interests" title="Minimize">_</button>
             <button class="btn" data-close="win-interests" title="Close">×</button>
@@ -1073,7 +1073,7 @@
 
       <div class="win" id="win-contact" style="left: 420px; top: 40px; display:none;">
         <div class="titlebar" data-drag="win-contact">
-          <div class="title">✉ Contact</div>
+          <div class="title"><img src="contact-logo.png" alt="" class="menu-icon"> Contact</div>
           <div class="controls">
             <button class="btn min" data-min="win-contact" title="Minimize">_</button>
             <button class="btn" data-close="win-contact" title="Close">×</button>
@@ -1086,7 +1086,7 @@
 
       <div class="win" id="win-proj-ganil" style="left: 300px; top: 120px; display:none;">
         <div class="titlebar" data-drag="win-proj-ganil">
-          <div class="title">🧪 2026 — GANIL</div>
+          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> 2026 — GANIL</div>
           <div class="controls">
             <button class="btn min" data-min="win-proj-ganil" title="Minimize">_</button>
             <button class="btn" data-close="win-proj-ganil" title="Close">×</button>
@@ -1103,7 +1103,7 @@
 
       <div class="win" id="win-proj-sapienza" style="left: 340px; top: 160px; display:none;">
         <div class="titlebar" data-drag="win-proj-sapienza">
-          <div class="title">📌 2025 — Sapienza</div>
+          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> 2025 — Sapienza</div>
           <div class="controls">
             <button class="btn min" data-min="win-proj-sapienza" title="Minimize">_</button>
             <button class="btn" data-close="win-proj-sapienza" title="Close">×</button>
@@ -1120,7 +1120,7 @@
 
       <div class="win" id="win-proj-ijclab" style="left: 360px; top: 210px; display:none;">
         <div class="titlebar" data-drag="win-proj-ijclab">
-          <div class="title">📌 2023 — IJCLab</div>
+          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> 2023 — IJCLab</div>
           <div class="controls">
             <button class="btn min" data-min="win-proj-ijclab" title="Minimize">_</button>
             <button class="btn" data-close="win-proj-ijclab" title="Close">×</button>
@@ -1137,7 +1137,7 @@
 
       <div class="win" id="win-proj-hnl" style="left: 320px; top: 90px; display:none;">
         <div class="titlebar" data-drag="win-proj-hnl">
-          <div class="title">📌 2023 — UNAL</div>
+          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> 2023 — UNAL</div>
           <div class="controls">
             <button class="btn min" data-min="win-proj-hnl" title="Minimize">_</button>
             <button class="btn" data-close="win-proj-hnl" title="Close">×</button>
@@ -1154,7 +1154,7 @@
 
       <div class="win" id="win-proj-diffgeo" style="left: 280px; top: 250px; display:none;">
         <div class="titlebar" data-drag="win-proj-diffgeo">
-          <div class="title">📌 2022 — UNAL</div>
+          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> 2022 — UNAL</div>
           <div class="controls">
             <button class="btn min" data-min="win-proj-diffgeo" title="Minimize">_</button>
             <button class="btn" data-close="win-proj-diffgeo" title="Close">×</button>
@@ -1189,17 +1189,17 @@
     </div>
     <div class="sm-body">
       <div class="sm-left">
-        <div class="sm-item" data-open="about"><div class="sm-ico">📄</div>About</div>
-        <div class="sm-item" data-open="research"><div class="sm-ico">∂</div>Research</div>
-        <div class="sm-item" data-open="cv"><div class="sm-ico">🗂️</div>CV</div>
-        <div class="sm-item" data-open="events"><div class="sm-ico">📌</div>Events</div>
-        <div class="sm-item" data-open="projects"><div class="sm-ico">🧪</div>Projects</div>
-        <div class="sm-item" data-open="interests"><div class="sm-ico">★</div>Interests</div>
-        <div class="sm-item" data-open="contact"><div class="sm-ico">✉</div>Contact</div>
+        <div class="sm-item" data-open="about"><div class="sm-ico"><img src="about-logo.png" alt="" class="menu-icon"></div>About</div>
+        <div class="sm-item" data-open="research"><div class="sm-ico"><img src="research-logo.png" alt="" class="menu-icon"></div>Research</div>
+        <div class="sm-item" data-open="cv"><div class="sm-ico"><img src="cv-logo.png" alt="" class="menu-icon"></div>CV</div>
+        <div class="sm-item" data-open="events"><div class="sm-ico"><img src="events-logo.png" alt="" class="menu-icon"></div>Events</div>
+        <div class="sm-item" data-open="projects"><div class="sm-ico"><img src="projects-logo.png" alt="" class="menu-icon"></div>Projects</div>
+        <div class="sm-item" data-open="interests"><div class="sm-ico"><img src="interests-logo.png" alt="" class="menu-icon"></div>Interests</div>
+        <div class="sm-item" data-open="contact"><div class="sm-ico"><img src="contact-logo.png" alt="" class="menu-icon"></div>Contact</div>
       </div>
       <div class="sm-right">
-        <div class="sm-action" id="smClose"><div class="sm-ico">⏻</div>Close</div>
-        <div class="sm-action" id="smHide"><div class="sm-ico">🗕</div>Minimize all</div>
+        <div class="sm-action" id="smClose"><div class="sm-ico">x</div>Close</div>
+        <div class="sm-action" id="smHide"><div class="sm-ico">-</div>Minimize all</div>
       </div>
     </div>
   </div>
