@@ -1,22 +1,268 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Santiago Martinez</title>
-  <meta charset="UTF-8">
+
+  <style>
+    :root{
+      --ink:#111;
+      --muted:#444;
+      --paper:#fbfaf6;
+      --line:#e7e3d9;
+      --rule:#cfc8bb;
+      --accent:#0f3d2e; /* subtle deep green */
+      --maxw: 920px;
+    }
+
+    /* old-school paper + faint grid */
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        linear-gradient(var(--paper), var(--paper)),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.035), rgba(0,0,0,0.035) 1px, transparent 1px, transparent 24px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02) 1px, transparent 1px, transparent 24px);
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.55;
+    }
+
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .page{
+      max-width: var(--maxw);
+      margin: 48px auto;
+      padding: 40px 32px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--rule);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    header{
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 22px;
+    }
+
+    .photo{
+      width: 140px;
+      height: 140px;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      background: linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02));
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    /* makes photos look sober and consistent */
+    .photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(25%) contrast(1.05);
+    }
+
+    .photo .placeholder{
+      font-size: 12px;
+      color: var(--muted);
+      padding: 10px;
+      text-align: center;
+    }
+
+    h1{
+      font-size: 34px;
+      margin: 0 0 6px 0;
+      letter-spacing: 0.2px;
+    }
+
+    .tagline{
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .eq{
+      font-family: "Courier New", ui-monospace, monospace;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    nav{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 14px;
+    }
+
+    section{
+      margin-top: 26px;
+    }
+
+    h2{
+      font-size: 18px;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .rule{
+      height:1px;
+      background: var(--line);
+      margin: 16px 0;
+    }
+
+    ul{
+      margin: 8px 0 0 18px;
+      padding: 0;
+    }
+    li{ margin: 6px 0; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card{
+      border: 1px solid var(--line);
+      padding: 16px 16px 14px;
+      background: rgba(255,255,255,0.6);
+    }
+
+    .small{
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer{
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 720px){
+      header{ grid-template-columns: 1fr; }
+      .photo{ width: 120px; height: 120px; }
+      .grid{ grid-template-columns: 1fr; }
+      .page{ margin: 18px 10px; padding: 26px 18px; }
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Santiago Martinez</h1>
+  <main class="page">
+    <header>
+      <div class="photo">
+        <!-- Put your photo file in the same folder and name it "me.jpg" (or change the src) -->
+        <img src="me.jpg" alt="Portrait of Santiago Martinez" onerror="this.remove(); this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>Add a file named <b>me.jpg</b><br/>in this folder to show your photo.</div>';">
+      </div>
 
-  <p>Mathematics, physics, and computation.</p>
+      <div>
+        <h1>Santiago Martinez</h1>
+        <p class="tagline">Mathematics · Physics · Computation</p>
+        <div class="eq">Let f : (ideas) → (models) → (code) → (results), and iterate.</div>
 
-  <h2>Research</h2>
-  <p>Interests in topology, numerical analysis, and physics.</p>
+        <nav>
+          <a href="#research">Research</a>
+          <a href="#projects">Projects</a>
+          <a href="#writing">Writing</a>
+          <a href="#contact">Contact</a>
+          <!-- Optional: add your links -->
+          <!-- <a href="https://github.com/USERNAME">GitHub</a> -->
+          <!-- <a href="https://www.linkedin.com/in/USERNAME/">LinkedIn</a> -->
+        </nav>
+      </div>
+    </header>
 
-  <h2>Projects</h2>
-  <p>Beam physics simulations, machine learning models for phonon forces.</p>
+    <section id="research">
+      <h2>Research</h2>
+      <p>
+        I work at the intersection of <b>analysis</b>, <b>geometry/topology</b>, and
+        <b>scientific computation</b>, with a focus on building mathematically structured models
+        that remain useful in real simulations.
+      </p>
+      <ul>
+        <li>Numerical analysis and operator viewpoints</li>
+        <li>Topological and geometric structure in physical models</li>
+        <li>Machine learning for physics, with emphasis on interpretability and constraints</li>
+      </ul>
+    </section>
 
-  <h2>Contact</h2>
-  <p>Email: your@email.com</p>
+    <div class="rule"></div>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <b>Beam physics simulations</b>
+          <p class="small">
+            Modeling, numerical studies, and analysis workflows for accelerator problems
+            (beam dynamics, diagnostics, and uncertainty-sensitive measurements).
+          </p>
+        </div>
+        <div class="card">
+          <b>ML models for phonon forces</b>
+          <p class="small">
+            Low-rank learning for higher-order force predictions and efficient computation of
+            derived quantities (e.g., mode-projected interactions).
+          </p>
+        </div>
+      </div>
+      <p class="small" style="margin-top:12px;">
+        (If you want, add links to repos, posters, or a 1-page PDF for each project.)
+      </p>
+    </section>
+
+    <section id="writing">
+      <h2>Writing</h2>
+      <p class="small">
+        Notes, short expositions, and technical write-ups. (Add a “Notes” folder or a blog later.)
+      </p>
+      <ul>
+        <li><a href="#">Example note (coming soon)</a></li>
+      </ul>
+    </section>
+
+    <div class="rule"></div>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Email:
+        <a href="mailto:your@email.com">your@email.com</a>
+      </p>
+      <p class="small">
+        Based in Europe. Open to research collaborations and PhD opportunities.
+      </p>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Santiago Martinez</div>
+      <div class="small">Last updated: <span id="d"></span></div>
+    </footer>
+  </main>
+
+  <script>
+    const now = new Date();
+    document.getElementById("y").textContent = now.getFullYear();
+    document.getElementById("d").textContent = now.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"2-digit" });
+  </script>
 </body>
 </html>
