@@ -823,20 +823,7 @@
         </div>
         <div class="content">
           <div class="explorer-shell">
-            <div class="explorer-sidebar">
-              <div class="rail-logo">
-                <img src="windows-logo.png" alt="Windows logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div class="fallback-logo" style="display:none;">🪟</div>
-              </div>
-              <div class="rail-logo">
-                <img src="logo-custom.png" alt="Custom logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div class="fallback-logo" style="display:none;">💠</div>
-              </div>
-            </div>
             <div class="explorer-main">
-              <div class="explorer-head">
-                This panel stays open and works like a sober faux-Explorer launcher for the rest of the desktop.
-              </div>
               <div class="menu-grid" id="menuGrid">
                 <button class="menu-btn" data-open="about" type="button">
                   <span class="ico">📄</span>
@@ -1131,7 +1118,10 @@
   </div>
 
   <div id="taskbar">
-    <div id="startBtn"><span class="startDot"></span>Start</div>
+    <div id="startBtn">
+      <img src="windows-logo.png" alt="Windows logo" class="startLogo">
+      <span>Start</span>
+    </div>
     <div id="tasks"></div>
     <div id="tray"><span id="clock"></span></div>
   </div>
