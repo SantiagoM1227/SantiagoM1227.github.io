@@ -777,6 +777,20 @@
         margin-bottom: 12px;
       }
       .icon{ width: auto; }
+      .menu-icon{
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        display: block;
+      }
+
+      .title-icon{
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+        display: block;
+        flex-shrink: 0;
+      }
       .win{
         position: relative !important;
         left: 0 !important;
@@ -788,7 +802,10 @@
         transform: none;
       }
       .side-panel .content{ height: auto; }
-      .explorer-shell{ grid-template-columns: 64px 1fr; }
+      .explorer-shell{
+        display: block;
+        height: 100%;
+      }
       .gadget-body{
         grid-template-columns: 140px 1fr;
       }
@@ -796,6 +813,7 @@
         width: 140px;
         height: 210px;
       }
+      
     }
   </style>
 </head>
@@ -823,7 +841,10 @@
 
       <div class="win side-panel active" id="win-navigator">
         <div class="titlebar">
-          <div class="title">🗂️ Explorer</div>
+          <div class="title">
+            <img src="explorer-logo.png" alt="" class="title-icon">
+            <span>Explorer</span>
+          </div>
           <div class="controls">
             <button class="btn min" type="button" aria-label="Pinned">•</button>
             <button class="btn" type="button" aria-label="Pinned">×</button>
@@ -834,31 +855,44 @@
             <div class="explorer-main">
               <div class="menu-grid" id="menuGrid">
                 <button class="menu-btn" data-open="about" type="button">
-                  <span class="ico">📄</span>
+                  <span class="ico">
+                    <img src="about-logo.png" alt="" class="menu-icon">
+                  </span>
                   <span>About<small>General profile and research identity</small></span>
-                </button>
                 <button class="menu-btn" data-open="research" type="button">
-                  <span class="ico">∂</span>
+                  <span class="ico">
+                    <img src="research-logo.png" alt="" class="menu-icon">
+                  </span>
                   <span>Research<small>Main themes and directions</small></span>
                 </button>
                 <button class="menu-btn" data-open="projects" type="button">
-                  <span class="ico">🧪</span>
+                  <span class="ico">
+                    <img src="projects-logo.png" alt="" class="menu-icon">
+                  </span>
                   <span>Projects<small>Detailed academic and technical work</small></span>
                 </button>
                 <button class="menu-btn" data-open="cv" type="button">
-                  <span class="ico">🗂️</span>
+                  <span class="ico">
+                    <img src="cv-logo.png" alt="" class="menu-icon">
+                  </span>
                   <span>CV<small>Education and core skills</small></span>
                 </button>
                 <button class="menu-btn" data-open="events" type="button">
-                  <span class="ico">📌</span>
+                  <span class="ico">
+                    <img src="events-logo.png" alt="" class="menu-icon">
+                  </span>
                   <span>Events<small>Schools, talks, and activity</small></span>
                 </button>
                 <button class="menu-btn" data-open="interests" type="button">
-                  <span class="ico">★</span>
+                  <span class="ico">
+                    <img src="interests-logo.png" alt="" class="menu-icon">
+                  </span>
                   <span>Interests<small>Mathematical and scientific interests</small></span>
                 </button>
                 <button class="menu-btn" data-open="contact" type="button">
-                  <span class="ico">✉</span>
+                  <span class="ico">
+                    <img src="contact-logo.png" alt="" class="menu-icon">
+                  </span>
                   <span>Contact<small>Email and collaboration details</small></span>
                 </button>
               </div>
@@ -873,17 +907,29 @@
 
     <div class="desktop-area" id="desktopArea">
       <div class="icons" id="icons">
-        <div class="icon" data-open="about"><div class="glyph">📄</div><div class="label">About</div></div>
-        <div class="icon" data-open="research"><div class="glyph">∂</div><div class="label">Research</div></div>
-        <div class="icon" data-open="projects"><div class="glyph">🧪</div><div class="label">Projects</div></div>
-        <div class="icon" data-open="cv"><div class="glyph">🗂️</div><div class="label">CV</div></div>
-        <div class="icon" data-open="events"><div class="glyph">📌</div><div class="label">Events</div></div>
-        <div class="icon" data-open="contact"><div class="glyph">✉</div><div class="label">Contact</div></div>
+        <div class="icon" data-open="about"><div class="glyph">
+          <img src="about-logo.png" alt="" class="menu-icon">
+        </div><div class="label">About</div></div>
+        <div class="icon" data-open="research"><div class="glyph">
+          <img src="research-logo.png" alt="" class="menu-icon">
+        </div><div class="label">Research</div></div>
+        <div class="icon" data-open="projects"><div class="glyph">
+          <img src="projects-logo.png" alt="" class="menu-icon">
+        </div><div class="label">Projects</div></div>
+        <div class="icon" data-open="cv"><div class="glyph">
+          <img src="cv-logo.png" alt="" class="menu-icon">
+        </div><div class="label">CV</div></div>
+        <div class="icon" data-open="events"><div class="glyph">
+          <img src="events-logo.png" alt="" class="menu-icon">
+        </div><div class="label">Events</div></div>
+        <div class="icon" data-open="contact"><div class="glyph">
+          <img src="contact-logo.png" alt="" class="menu-icon">
+        </div><div class="label">Contact</div></div>
       </div>
 
       <div class="win" id="win-about" style="left: 120px; top: 18px;">
         <div class="titlebar" data-drag="win-about">
-          <div class="title">📄 About</div>
+          <div class="title"> About</div>
           <div class="controls">
             <button class="btn min" data-min="win-about" title="Minimize">_</button>
             <button class="btn" data-close="win-about" title="Close">×</button>
