@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:realworld="http://www.rw-designer.com/export-svg" width="256px" height="256px">
-  <g inkscape:groupmode="layer" inkscape:label="bluesky">
-    <path d="M 62.288 39.612C 88.8864 59.5804 117.496 100.068 128 121.796C 138.505 100.07 167.113 59.58 193.712 39.612C 212.904 25.2036 244 14.0552 244 49.53C 244 56.6148 239.938 109.046 237.556 117.558C 229.275 147.152 199.098 154.699 172.256 150.131C 219.176 158.117 231.111 184.568 205.334 211.019C 156.378 261.255 134.97 198.415 129.482 182.313C 128.476 179.361 128.006 177.98 127.999 179.154C 127.992 177.98 127.522 179.361 126.516 182.313C 121.03 198.415 99.6232 261.257 50.6644 211.019C 24.8868 184.568 36.8224 158.115 83.7432 150.131C 56.9 154.699 26.7228 147.152 18.4428 117.558C 16.0603 109.045 11.9988 56.614 11.9988 49.53C 11.9988 14.0552 43.0956 25.2036 62.2868 39.612C 62.2868 39.612 62.288 39.612 62.288 39.612 z" fill="#ffffff" fill-rule="evenodd" />
-  </g>
-</svg>

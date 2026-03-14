@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:realworld="http://www.rw-designer.com/export-svg" width="256px" height="256px">
-  <g inkscape:groupmode="layer" inkscape:label="facebook">
-    <rect fill="#ffffff" height="104" width="48" x="21.124" y="129.438" />
-    <path d="M 197.873 221.826C 228.7 217.477 211.098 199.954 211.098 199.954C 231.215 184.046 214.15 171.468 214.15 171.468C 233.732 154.209 213.642 139.93 213.642 139.93C 227.621 126.888 221.78 108.901 213.133 107.884C 204.486 106.867 142.871 109.184 150.334 102.085C 165.073 88.0654 168.37 38.1965 162.266 32.0925C 156.162 25.9884 136.323 27.5145 135.306 34.1272C 134.289 40.7399 133.78 65.1561 126.659 68.7168C 119.538 72.2775 91.5605 112.971 90.5432 124.67C 89.5259 136.369 87.4914 217.757 91.5608 221.318C 95.6302 224.879 190.318 222.892 197.873 221.826 z" fill="#ffffff" fill-rule="evenodd" />
-  </g>
-</svg>
