@@ -60,6 +60,28 @@
     a:visited{ color: var(--visited); }
     a:hover{ text-decoration: none; }
 
+    .menu-icon{
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .desktop-icon-img{
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .title-icon{
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
     #desktop{
       position: relative;
       height: calc(100vh - var(--taskbar-h));
@@ -230,61 +252,16 @@
     }
 
     .explorer-shell{
-      display: grid;
-      grid-template-columns: 78px 1fr;
-      height: 100%;
-    }
-
-    .explorer-sidebar{
-      background: linear-gradient(180deg, #d7e7ff, #bed7ff 46%, #cfe0ff 100%);
-      border-right: 1px solid rgba(0,0,0,0.12);
-      padding: 8px 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .rail-logo{
-      width: 100%;
-      aspect-ratio: 1;
-      border-radius: 10px;
-      border: 1px solid rgba(0,0,0,0.14);
-      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(227,237,255,0.96));
-      display: grid;
-      place-items: center;
-      padding: 8px;
-      overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
-    }
-
-    .rail-logo img{
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
       display: block;
-    }
-
-    .rail-logo .fallback-logo{
-      font-size: 24px;
-    }
-
-    .explorer-shell{
       height: 100%;
     }
 
     .explorer-main{
+      background: linear-gradient(180deg, #fdfefe 0%, #f6f9ff 100%);
+      padding: 10px;
+      overflow: auto;
       height: 100%;
       width: 100%;
-    }
-
-    .explorer-head{
-      margin-bottom: 10px;
-      padding: 9px 10px;
-      border: 1px solid #c9d8f2;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #ffffff, #edf4ff);
-      font-size: 12px;
-      color: #20314d;
     }
 
     .menu-grid{
@@ -294,7 +271,7 @@
 
     .menu-btn{
       display: grid;
-      grid-template-columns: 28px 1fr;
+      grid-template-columns: 22px 1fr;
       gap: 8px;
       align-items: center;
       width: 100%;
@@ -319,14 +296,14 @@
     }
 
     .menu-btn .ico{
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
       display: grid;
       place-items: center;
       border: 1px solid rgba(0,0,0,0.14);
       background: linear-gradient(180deg, #ffffff, #d8e8ff);
-      font-size: 14px;
+      padding: 2px;
     }
 
     .menu-btn small{
@@ -382,6 +359,7 @@
       border-radius: 4px;
       cursor: default;
     }
+
     .icon.selected{
       background: rgba(0, 120, 215, 0.28);
       outline: 1px solid rgba(0, 120, 215, 0.55);
@@ -399,6 +377,7 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
       margin: 0 auto 6px;
     }
+
     .icon .label{
       font-size: 12px;
       color: #fff;
@@ -440,6 +419,7 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
       cursor: pointer;
     }
+
     .startLogo{
       width: 18px;
       height: 18px;
@@ -447,16 +427,8 @@
       display: block;
       flex-shrink: 0;
     }
-    #startBtn:active{ filter: brightness(0.95); }
 
-    .startDot{
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #fff, rgba(255,255,255,0.0) 55%),
-                  radial-gradient(circle at 55% 55%, #ffd84b, #ff3a3a 60%, #2aa7ff 61%, #2aa7ff 100%);
-      border: 1px solid rgba(0,0,0,0.25);
-    }
+    #startBtn:active{ filter: brightness(0.95); }
 
     #tasks{
       flex: 1;
@@ -482,6 +454,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .taskbtn.active{
       background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(0,0,0,0.18));
       outline: 1px solid rgba(255,255,255,0.25);
@@ -512,6 +485,7 @@
       overflow: hidden;
       z-index: 1300;
     }
+
     #startMenu.open{ display: block; }
 
     .sm-top{
@@ -523,14 +497,23 @@
       gap: 10px;
       padding: 10px;
     }
+
     .sm-avatar{
-      width: 44px; height: 44px;
+      width: 44px;
+      height: 44px;
       border-radius: 8px;
       overflow: hidden;
       background: #d9e7ff;
       border: 1px solid rgba(0,0,0,0.25);
     }
-    .sm-avatar img{ width:100%; height:100%; object-fit: cover; display:block; }
+
+    .sm-avatar img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
     .sm-name{
       font-weight: 700;
       font-size: 14px;
@@ -548,6 +531,7 @@
       border-right: 1px solid rgba(0,0,0,0.12);
       background: #fff;
     }
+
     .sm-right{
       padding: 8px;
       background: #f4f7ff;
@@ -562,18 +546,22 @@
       gap: 10px;
       font-size: 13px;
     }
+
     .sm-item:hover{
       background: rgba(0,120,215,0.18);
       outline: 1px solid rgba(0,120,215,0.35);
     }
+
     .sm-ico{
-      width: 22px; height: 22px;
+      width: 22px;
+      height: 22px;
       border-radius: 6px;
       background: linear-gradient(180deg, #ffffff, #d9e9ff);
       border: 1px solid rgba(0,0,0,0.18);
       display: grid;
       place-items:center;
       font-size: 13px;
+      padding: 2px;
     }
 
     .sm-action{
@@ -585,6 +573,7 @@
       align-items:center;
       gap:8px;
     }
+
     .sm-action:hover{
       background: rgba(0,0,0,0.06);
     }
@@ -601,10 +590,12 @@
       transform: translateY(10px) scale(0.985);
       transition: opacity 160ms ease, transform 160ms ease, box-shadow 160ms ease;
     }
+
     .win.open{
       opacity: 1;
       transform: translateY(0) scale(1);
     }
+
     .win.active{
       box-shadow: 0 18px 36px rgba(0,0,0,0.40);
     }
@@ -623,13 +614,13 @@
       color: #111;
       border-bottom: 1px solid rgba(0,0,0,0.18);
     }
+
     .win.active .titlebar,
     .side-panel .titlebar{
       background: linear-gradient(180deg, #0b57d0, #3a8df2);
       color: #fff;
       text-shadow: 0 1px 0 rgba(0,0,0,0.35);
     }
-  
 
     .titlebar .title{
       display:flex;
@@ -657,11 +648,13 @@
       cursor: pointer;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
     }
+
     .btn.min{
       background: linear-gradient(180deg, #fff6cc, #ffd96a);
       color:#222;
       font-weight: 900;
     }
+
     .btn:active{ filter: brightness(0.95); }
 
     .content{
@@ -683,6 +676,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
+
     .box{
       border: 1px solid #cfcfcf;
       padding: 10px;
@@ -703,6 +697,7 @@
       line-height: 1.35;
       font-weight: 700;
     }
+
     .projlink:hover{ text-decoration: none; }
 
     .tags{
@@ -711,6 +706,7 @@
       flex-wrap: wrap;
       gap: 6px;
     }
+
     .tag{
       display: inline-block;
       font-size: 11px;
@@ -729,6 +725,7 @@
       cursor: pointer;
       font-weight: 700;
     }
+
     .backlink:hover{ text-decoration: none; }
 
     @media (max-width: 1100px){
@@ -737,15 +734,19 @@
         --gadget-h: 410px;
         --menu-h: 340px;
       }
+
       .desktop-area{
         left: calc(var(--sidebar-w) + 24px);
       }
+
       .win{
         width: min(760px, calc(100% - 18px));
       }
+
       .gadget-body{
         grid-template-columns: 150px 1fr;
       }
+
       .clippy-shell{
         width: 150px;
         height: 225px;
@@ -754,8 +755,15 @@
 
     @media (max-width: 900px){
       html, body{ overflow: auto; }
-      #desktop{ height: auto; min-height: calc(100vh - var(--taskbar-h)); overflow: visible; }
+
+      #desktop{
+        height: auto;
+        min-height: calc(100vh - var(--taskbar-h));
+        overflow: visible;
+      }
+
       #taskbar{ position: sticky; }
+
       .left-rail{
         position: relative;
         left: 0;
@@ -764,6 +772,7 @@
         width: 100%;
         padding: 12px;
       }
+
       .desktop-area{
         position: relative;
         left: 0;
@@ -772,6 +781,7 @@
         bottom: auto;
         padding: 0 12px 12px;
       }
+
       .icons{
         position: relative;
         width: auto;
@@ -779,21 +789,9 @@
         grid-template-columns: repeat(3, minmax(90px, 1fr));
         margin-bottom: 12px;
       }
-      .icon{ width: auto; }
-      .menu-icon{
-        width: 22px;
-        height: 22px;
-        object-fit: contain;
-        display: block;
-      }
 
-      .title-icon{
-        width: 16px;
-        height: 16px;
-        object-fit: contain;
-        display: block;
-        flex-shrink: 0;
-      }
+      .icon{ width: auto; }
+
       .win{
         position: relative !important;
         left: 0 !important;
@@ -804,16 +802,17 @@
         opacity: 1;
         transform: none;
       }
+
       .side-panel .content{ height: auto; }
-      
+
       .gadget-body{
         grid-template-columns: 140px 1fr;
       }
+
       .clippy-shell{
         width: 140px;
         height: 210px;
       }
-      
     }
   </style>
 </head>
@@ -855,49 +854,43 @@
             <div class="explorer-main">
               <div class="menu-grid" id="menuGrid">
                 <button class="menu-btn" data-open="about" type="button">
-                  <span class="ico">
-                    <img src="about-logo.png" alt="" class="menu-icon">
-                  </span>
+                  <span class="ico"><img src="about-logo.png" alt="" class="menu-icon"></span>
                   <span>About<small>General profile and research identity</small></span>
+                </button>
+
                 <button class="menu-btn" data-open="research" type="button">
-                  <span class="ico">
-                    <img src="research-logo.png" alt="" class="menu-icon">
-                  </span>
+                  <span class="ico"><img src="research-logo.png" alt="" class="menu-icon"></span>
                   <span>Research<small>Main themes and directions</small></span>
                 </button>
+
                 <button class="menu-btn" data-open="projects" type="button">
-                  <span class="ico">
-                    <img src="projects-logo.png" alt="" class="menu-icon">
-                  </span>
+                  <span class="ico"><img src="projects-logo.png" alt="" class="menu-icon"></span>
                   <span>Projects<small>Detailed academic and technical work</small></span>
                 </button>
+
                 <button class="menu-btn" data-open="cv" type="button">
-                  <span class="ico">
-                    <img src="cv-logo.png" alt="" class="menu-icon">
-                  </span>
+                  <span class="ico"><img src="cv-logo.png" alt="" class="menu-icon"></span>
                   <span>CV<small>Education and core skills</small></span>
                 </button>
+
                 <button class="menu-btn" data-open="events" type="button">
-                  <span class="ico">
-                    <img src="events-logo.png" alt="" class="menu-icon">
-                  </span>
+                  <span class="ico"><img src="events-logo.png" alt="" class="menu-icon"></span>
                   <span>Events<small>Schools, talks, and activity</small></span>
                 </button>
+
                 <button class="menu-btn" data-open="interests" type="button">
-                  <span class="ico">
-                    <img src="interests-logo.png" alt="" class="menu-icon">
-                  </span>
+                  <span class="ico"><img src="interests-logo.png" alt="" class="menu-icon"></span>
                   <span>Interests<small>Mathematical and scientific interests</small></span>
                 </button>
+
                 <button class="menu-btn" data-open="contact" type="button">
-                  <span class="ico">
-                    <img src="contact-logo.png" alt="" class="menu-icon">
-                  </span>
+                  <span class="ico"><img src="contact-logo.png" alt="" class="menu-icon"></span>
                   <span>Contact<small>Email and collaboration details</small></span>
                 </button>
               </div>
+
               <div class="asset-note">
-                Replace assets by adding files named <code>me-clippy.png</code>, <code>windows-logo.png</code>, <code>logo-custom.png</code>, <code>bliss.jpg</code>, <code>cursor.cur</code>, or <code>cursor-pointer.cur</code> in the same folder.
+                Replace assets by adding files named <code>me-clippy.png</code>, <code>windows-logo.png</code>, <code>bliss.jpg</code>, <code>cursor.cur</code>, or <code>cursor-pointer.cur</code> in the same folder.
               </div>
             </div>
           </div>
@@ -907,29 +900,35 @@
 
     <div class="desktop-area" id="desktopArea">
       <div class="icons" id="icons">
-        <div class="icon" data-open="about"><div class="glyph">
-          <img src="about-logo.png" alt="" class="menu-icon">
-        </div><div class="label">About</div></div>
-        <div class="icon" data-open="research"><div class="glyph">
-          <img src="research-logo.png" alt="" class="menu-icon">
-        </div><div class="label">Research</div></div>
-        <div class="icon" data-open="projects"><div class="glyph">
-          <img src="projects-logo.png" alt="" class="menu-icon">
-        </div><div class="label">Projects</div></div>
-        <div class="icon" data-open="cv"><div class="glyph">
-          <img src="cv-logo.png" alt="" class="menu-icon">
-        </div><div class="label">CV</div></div>
-        <div class="icon" data-open="events"><div class="glyph">
-          <img src="events-logo.png" alt="" class="menu-icon">
-        </div><div class="label">Events</div></div>
-        <div class="icon" data-open="contact"><div class="glyph">
-          <img src="contact-logo.png" alt="" class="menu-icon">
-        </div><div class="label">Contact</div></div>
+        <div class="icon" data-open="about">
+          <div class="glyph"><img src="about-logo.png" alt="" class="desktop-icon-img"></div>
+          <div class="label">About</div>
+        </div>
+        <div class="icon" data-open="research">
+          <div class="glyph"><img src="research-logo.png" alt="" class="desktop-icon-img"></div>
+          <div class="label">Research</div>
+        </div>
+        <div class="icon" data-open="projects">
+          <div class="glyph"><img src="projects-logo.png" alt="" class="desktop-icon-img"></div>
+          <div class="label">Projects</div>
+        </div>
+        <div class="icon" data-open="cv">
+          <div class="glyph"><img src="cv-logo.png" alt="" class="desktop-icon-img"></div>
+          <div class="label">CV</div>
+        </div>
+        <div class="icon" data-open="events">
+          <div class="glyph"><img src="events-logo.png" alt="" class="desktop-icon-img"></div>
+          <div class="label">Events</div>
+        </div>
+        <div class="icon" data-open="contact">
+          <div class="glyph"><img src="contact-logo.png" alt="" class="desktop-icon-img"></div>
+          <div class="label">Contact</div>
+        </div>
       </div>
 
       <div class="win" id="win-about" style="left: 120px; top: 18px;">
         <div class="titlebar" data-drag="win-about">
-          <div class="title"><img src="about-logo.png" alt="" class="menu-icon"> About</div>
+          <div class="title"><img src="about-logo.png" alt="" class="title-icon"><span>About</span></div>
           <div class="controls">
             <button class="btn min" data-min="win-about" title="Minimize">_</button>
             <button class="btn" data-close="win-about" title="Close">×</button>
@@ -950,7 +949,7 @@
 
       <div class="win" id="win-research" style="left: 156px; top: 82px; display:none;">
         <div class="titlebar" data-drag="win-research">
-          <div class="title"><img src="research-logo.png" alt="" class="menu-icon"> Research</div>
+          <div class="title"><img src="research-logo.png" alt="" class="title-icon"><span>Research</span></div>
           <div class="controls">
             <button class="btn min" data-min="win-research" title="Minimize">_</button>
             <button class="btn" data-close="win-research" title="Close">×</button>
@@ -977,7 +976,7 @@
 
       <div class="win" id="win-cv" style="left: 220px; top: 44px; display:none;">
         <div class="titlebar" data-drag="win-cv">
-          <div class="title"><img src="cv-logo.png" alt="" class="menu-icon"> CV</div>
+          <div class="title"><img src="cv-logo.png" alt="" class="title-icon"><span>CV</span></div>
           <div class="controls">
             <button class="btn min" data-min="win-cv" title="Minimize">_</button>
             <button class="btn" data-close="win-cv" title="Close">×</button>
@@ -994,7 +993,7 @@
 
       <div class="win" id="win-events" style="left: 240px; top: 170px; display:none;">
         <div class="titlebar" data-drag="win-events">
-          <div class="title"><img src="events-logo.png" alt="" class="menu-icon"> Events</div>
+          <div class="title"><img src="events-logo.png" alt="" class="title-icon"><span>Events</span></div>
           <div class="controls">
             <button class="btn min" data-min="win-events" title="Minimize">_</button>
             <button class="btn" data-close="win-events" title="Close">×</button>
@@ -1011,7 +1010,7 @@
 
       <div class="win" id="win-projects" style="left: 290px; top: 90px; display:none;">
         <div class="titlebar" data-drag="win-projects">
-          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> Projects</div>
+          <div class="title"><img src="projects-logo.png" alt="" class="title-icon"><span>Projects</span></div>
           <div class="controls">
             <button class="btn min" data-min="win-projects" title="Minimize">_</button>
             <button class="btn" data-close="win-projects" title="Close">×</button>
@@ -1056,7 +1055,7 @@
 
       <div class="win" id="win-interests" style="left: 360px; top: 210px; display:none;">
         <div class="titlebar" data-drag="win-interests">
-          <div class="title"><img src="interests-logo.png" alt="" class="menu-icon"> Interests</div>
+          <div class="title"><img src="interests-logo.png" alt="" class="title-icon"><span>Interests</span></div>
           <div class="controls">
             <button class="btn min" data-min="win-interests" title="Minimize">_</button>
             <button class="btn" data-close="win-interests" title="Close">×</button>
@@ -1073,7 +1072,7 @@
 
       <div class="win" id="win-contact" style="left: 420px; top: 40px; display:none;">
         <div class="titlebar" data-drag="win-contact">
-          <div class="title"><img src="contact-logo.png" alt="" class="menu-icon"> Contact</div>
+          <div class="title"><img src="contact-logo.png" alt="" class="title-icon"><span>Contact</span></div>
           <div class="controls">
             <button class="btn min" data-min="win-contact" title="Minimize">_</button>
             <button class="btn" data-close="win-contact" title="Close">×</button>
@@ -1081,91 +1080,6 @@
         </div>
         <div class="content">
           <p>Email: <a href="mailto:santiago.martinez-saenz@universite-paris-saclay.fr">santiago.martinez-saenz@universite-paris-saclay.fr</a></p>
-        </div>
-      </div>
-
-      <div class="win" id="win-proj-ganil" style="left: 300px; top: 120px; display:none;">
-        <div class="titlebar" data-drag="win-proj-ganil">
-          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> 2026 — GANIL</div>
-          <div class="controls">
-            <button class="btn min" data-min="win-proj-ganil" title="Minimize">_</button>
-            <button class="btn" data-close="win-proj-ganil" title="Close">×</button>
-          </div>
-        </div>
-        <div class="content">
-          <span class="backlink" data-open="projects">← Back to Projects list</span>
-          <p class="small"><b>Keywords:</b> beam dynamics, nonlinear optics, collective effects, operator learning, surrogate modeling, uncertainty quantification</p>
-          <p><b>Context.</b> The FCC-ee High Energy Booster must balance performance with constraints from nonlinear optics and collective effects.</p>
-          <p><b>My contribution.</b> Exploratory machine-learning models aimed at emulating parts of the simulation pipeline, focusing on learning operators and fast scans.</p>
-          <p class="small"><b>Supervisors:</b> Dr. Adnan Ghribi, Dr. Hayg Guler.</p>
-        </div>
-      </div>
-
-      <div class="win" id="win-proj-sapienza" style="left: 340px; top: 160px; display:none;">
-        <div class="titlebar" data-drag="win-proj-sapienza">
-          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> 2025 — Sapienza</div>
-          <div class="controls">
-            <button class="btn min" data-min="win-proj-sapienza" title="Minimize">_</button>
-            <button class="btn" data-close="win-proj-sapienza" title="Close">×</button>
-          </div>
-        </div>
-        <div class="content">
-          <span class="backlink" data-open="projects">← Back to Projects list</span>
-          <p class="small"><b>Keywords:</b> low-rank decomposition, phonon interactions, anharmonicity, structured learning, efficiency</p>
-          <p><b>Context.</b> Anharmonic phonon interactions are expensive, so structure-exploiting approximations can accelerate downstream workflows.</p>
-          <p><b>My contribution.</b> Developed a low-rank representation approach and supervised-learning workflow to approximate interaction structure efficiently.</p>
-          <p class="small"><b>Supervisor:</b> Dr. Lorenzo Monacelli.</p>
-        </div>
-      </div>
-
-      <div class="win" id="win-proj-ijclab" style="left: 360px; top: 210px; display:none;">
-        <div class="titlebar" data-drag="win-proj-ijclab">
-          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> 2023 — IJCLab</div>
-          <div class="controls">
-            <button class="btn min" data-min="win-proj-ijclab" title="Minimize">_</button>
-            <button class="btn" data-close="win-proj-ijclab" title="Close">×</button>
-          </div>
-        </div>
-        <div class="content">
-          <span class="backlink" data-open="projects">← Back to Projects list</span>
-          <p class="small"><b>Keywords:</b> Compton polarimetry, detector resolution, simulation workflow, uncertainty propagation, FCC-ee</p>
-          <p><b>Context.</b> Polarization measurements depend on instrument response and resolution-aware modeling.</p>
-          <p><b>My contribution.</b> Built a numerical model and simulation workflow to quantify resolution effects and propagate them into polarization observables.</p>
-          <p class="small"><b>Supervisor:</b> Dr. Aurélien Martens.</p>
-        </div>
-      </div>
-
-      <div class="win" id="win-proj-hnl" style="left: 320px; top: 90px; display:none;">
-        <div class="titlebar" data-drag="win-proj-hnl">
-          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> 2023 — UNAL</div>
-          <div class="controls">
-            <button class="btn min" data-min="win-proj-hnl" title="Minimize">_</button>
-            <button class="btn" data-close="win-proj-hnl" title="Close">×</button>
-          </div>
-        </div>
-        <div class="content">
-          <span class="backlink" data-open="projects">← Back to Projects list</span>
-          <p class="small"><b>Keywords:</b> Heavy Neutral Leptons, beyond Standard Model, production mechanisms, couplings, simulation, analysis</p>
-          <p><b>Context.</b> HNL extensions address open questions beyond the Standard Model and motivate parameter-dependent experimental signatures.</p>
-          <p><b>My contribution.</b> Studied an HNL scenario and implemented simulation and analysis steps to explore signatures across parameter space.</p>
-          <p class="small"><b>Supervisor:</b> Dr. Carlos Sandoval.</p>
-        </div>
-      </div>
-
-      <div class="win" id="win-proj-diffgeo" style="left: 280px; top: 250px; display:none;">
-        <div class="titlebar" data-drag="win-proj-diffgeo">
-          <div class="title"><img src="projects-logo.png" alt="" class="menu-icon"> 2022 — UNAL</div>
-          <div class="controls">
-            <button class="btn min" data-min="win-proj-diffgeo" title="Minimize">_</button>
-            <button class="btn" data-close="win-proj-diffgeo" title="Close">×</button>
-          </div>
-        </div>
-        <div class="content">
-          <span class="backlink" data-open="projects">← Back to Projects list</span>
-          <p class="small"><b>Keywords:</b> differential geometry, symplectic structure, integrable systems, Hamiltonian mechanics, computation</p>
-          <p><b>Context.</b> Integrable Hamiltonian systems are organized by symplectic geometry and invariants.</p>
-          <p><b>My contribution.</b> Implemented computational tools aligned with differential-geometric structure to study symplectic objects and conserved quantities.</p>
-          <p class="small"><b>Supervisors:</b> Dr. Iván Contreras, Dr. Nicolás Martinez Alba.</p>
         </div>
       </div>
     </div>
@@ -1317,6 +1231,7 @@
     function toggleStartMenu(){
       startMenu.classList.toggle("open");
     }
+
     function closeStartMenu(){
       startMenu.classList.remove("open");
     }
@@ -1370,6 +1285,7 @@
         closeWin(btn.dataset.close);
       });
     });
+
     document.querySelectorAll("[data-min]").forEach(btn=>{
       btn.addEventListener("click", (e)=>{
         e.stopPropagation();
@@ -1430,6 +1346,7 @@
       const mm = String(now.getMinutes()).padStart(2,"0");
       clock.textContent = `${hh}:${mm}`;
     }
+
     tick();
     setInterval(tick, 1000);
 
