@@ -7,197 +7,336 @@
 
   <style>
     :root{
+      /* Win98-ish palette */
+      --desktop:#d6d6d6;
+      --desktop2:#ececec;
+
+      --winface:#c0c0c0;
       --ink:#111;
       --muted:#444;
-      --paper:#fbfaf6;
-      --line:#e7e3d9;
-      --rule:#cfc8bb;
-      --accent:#0f3d2e;
-      --maxw: 1080px;
+
+      --hi:#ffffff;
+      --lo:#808080;
+      --mid:#bdbdbd;
+
+      --title1:#0a246a;
+      --title2:#a6caf0;
+
+      --link:#0000ee;
+      --visited:#551a8b;
+
+      --maxw: 1180px;
       --sidebar: 280px;
     }
 
-    /* old-school paper + faint grid */
     body{
       margin:0;
       color:var(--ink);
+      font-family: Tahoma, Verdana, Arial, sans-serif;
       background:
-        linear-gradient(var(--paper), var(--paper)),
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.035), rgba(0,0,0,0.035) 1px, transparent 1px, transparent 24px),
-        repeating-linear-gradient(90deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02) 1px, transparent 1px, transparent 24px);
-      font-family: "Georgia", "Times New Roman", serif;
-      line-height: 1.55;
+        linear-gradient(var(--desktop), var(--desktop)),
+        radial-gradient(circle at 18px 18px, rgba(255,255,255,0.22) 0 2px, transparent 2px 100%),
+        radial-gradient(circle at 0 0, rgba(0,0,0,0.06) 0 1px, transparent 1px 100%);
+      background-size: auto, 32px 32px, 16px 16px;
     }
 
-    a{ color: var(--accent); text-decoration: none; }
-    a:hover{ text-decoration: underline; }
+    a{ color: var(--link); text-decoration: underline; }
+    a:visited{ color: var(--visited); }
+    a:hover{ text-decoration: none; }
 
     .wrap{
       max-width: var(--maxw);
-      margin: 34px auto;
-      padding: 0 18px;
-      display: grid;
+      margin: 18px auto;
+      padding: 0 12px 18px;
+      display:grid;
       grid-template-columns: var(--sidebar) 1fr;
-      gap: 22px;
+      gap: 14px;
       align-items: start;
+    }
+
+    /* classic bevel */
+    .bevel{
+      border: 2px solid;
+      border-color: var(--hi) var(--lo) var(--lo) var(--hi);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.78);
     }
 
     /* LEFT SIDEBAR */
     aside{
       position: sticky;
-      top: 18px;
-      align-self: start;
-
-      border: 1px solid var(--rule);
-      background: rgba(255,255,255,0.72);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      padding: 18px 16px;
+      top: 12px;
+      padding: 12px;
     }
 
     .photo{
       width: 100%;
       aspect-ratio: 1 / 1;
-      border-radius: 10px;
-      border: 1px solid var(--rule);
       overflow: hidden;
-      background: linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02));
-      display: grid;
-      place-items: center;
+      background: #ddd;
+      border: 2px solid;
+      border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+      margin-bottom: 10px;
     }
     .photo img{
       width:100%;
       height:100%;
       object-fit: cover;
-      filter: grayscale(25%) contrast(1.05);
+      filter: grayscale(15%) contrast(1.05);
+      display:block;
     }
     .placeholder{
+      padding: 10px;
       font-size: 12px;
       color: var(--muted);
-      padding: 10px;
       text-align: center;
     }
 
     .name{
-      margin: 14px 0 4px 0;
-      font-size: 26px;
+      margin: 10px 0 2px;
+      font-size: 20px;
+      font-weight: bold;
       letter-spacing: 0.2px;
     }
     .tagline{
-      margin: 0 0 10px 0;
+      margin: 0 0 10px;
+      font-size: 12px;
       color: var(--muted);
-      font-size: 14px;
     }
+
     .eq{
-      font-family: "Courier New", ui-monospace, monospace;
-      font-size: 12.5px;
-      color: var(--muted);
-      margin: 10px 0 14px 0;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      color: #222;
+      background: #f2f2f2;
+      padding: 6px 8px;
+      border: 1px solid #c9c9c9;
+      margin: 8px 0 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .blocktitle{
-      margin: 16px 0 8px 0;
-      font-size: 12px;
+      margin: 14px 0 6px;
+      font-size: 11px;
       letter-spacing: 0.6px;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #333;
     }
 
     .affil{
-      margin: 0;
+      margin:0;
       padding-left: 16px;
-      color: var(--ink);
-      font-size: 14px;
+      font-size: 12px;
+      line-height: 1.4;
     }
-    .affil li{ margin: 6px 0; }
+    .affil li{ margin: 4px 0; }
     .affil span{ color: var(--muted); }
 
-    nav{
-      display: grid;
+    /* Win98-ish menu */
+    .menu{
+      display:grid;
+      gap: 4px;
+      margin-top: 8px;
+      user-select: none;
+    }
+    .menu-item{
+      display:flex;
+      align-items:center;
       gap: 8px;
-      margin-top: 10px;
+      padding: 6px 6px;
+      background: #fff;
+      border: 2px solid;
+      border-color: var(--hi) var(--mid) var(--mid) var(--hi);
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .menu-item .icon{
+      width: 18px;
+      height: 18px;
+      display:grid;
+      place-items:center;
       font-size: 14px;
+      background: #f2f2f2;
+      border: 1px solid #cfcfcf;
     }
-    nav a{
-      padding: 6px 8px;
-      border: 1px solid transparent;
-      border-radius: 8px;
+    .menu-item .label{
+      color: var(--link);
+      text-decoration: underline;
     }
-    nav a:hover{
-      border-color: var(--line);
-      background: rgba(255,255,255,0.6);
-      text-decoration: none;
+    .menu-item:hover{
+      background: var(--title1);
+      border-color: #cfe3ff var(--title1) var(--title1) #cfe3ff;
     }
+    .menu-item:hover .label{ color:#fff; text-decoration: none; }
+    .menu-item:hover .icon{ background:#eaf2ff; border-color:#cfe3ff; }
 
     .quick{
-      font-size: 13px;
-      color: var(--muted);
-      display: grid;
-      gap: 6px;
+      font-size: 12px;
       margin-top: 10px;
+      color: var(--muted);
+      display:grid;
+      gap: 6px;
     }
 
-    /* RIGHT CONTENT */
+    /* RIGHT DESKTOP */
     main{
-      border: 1px solid var(--rule);
-      background: rgba(255,255,255,0.72);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      padding: 26px 26px 18px;
+      position: relative;
+      min-height: 780px;
+      overflow: hidden;
+      background: var(--desktop2);
+      padding: 10px;
     }
 
-    section{ margin-top: 22px; }
-    h2{
-      font-size: 16px;
-      margin: 0 0 10px 0;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
+    .desktop{
+      position: relative;
+      min-height: 760px;
     }
 
-    .rule{
-      height:1px;
-      background: var(--line);
-      margin: 16px 0;
+    /* WINDOWS */
+    .win{
+      position: absolute;
+      width: min(820px, calc(100% - 26px));
+      max-width: 820px;
+      background: var(--winface);
+
+      border: 2px solid;
+      border-color: var(--hi) var(--lo) var(--lo) var(--hi);
+      box-shadow: 3px 3px 0 #666;
+
+      opacity: 0;
+      transform: translateY(10px) scale(0.98);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+    .win.open{
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .win.active{
+      box-shadow: 5px 5px 0 #444;
     }
 
-    .grid2{
+    .titlebar{
+      background: linear-gradient(90deg, var(--title1), var(--title2));
+      color: #fff;
+      padding: 6px 8px;
+      font-size: 13px;
+      font-weight: bold;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      user-select: none;
+    }
+    .titlebar .title{
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .controls{ display:flex; gap:4px; }
+
+    .btn{
+      width: 18px;
+      height: 18px;
+      background: var(--winface);
+      border: 2px solid;
+      border-color: var(--hi) var(--lo) var(--lo) var(--hi);
+      display:grid;
+      place-items:center;
+      font-size: 12px;
+      color: #111;
+      line-height: 0;
+      cursor: pointer;
+    }
+    .btn:active{
+      border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    }
+
+    .content{
+      background: #fff;
+      padding: 12px 12px 10px;
+      border-top: 1px solid #9a9a9a;
+      font-size: 14px;
+      color: #111;
+    }
+    .content p{ margin: 0 0 10px; }
+    .small{ font-size: 12.5px; color: var(--muted); }
+
+    .two{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      gap: 12px;
+    }
+    .box{
+      border: 1px solid #cfcfcf;
+      padding: 10px;
+      background: #fcfcfc;
     }
 
-    .card{
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.6);
-      padding: 14px 14px 12px;
-    }
-
-    .small{ color: var(--muted); font-size: 14px; }
-
-    ul{ margin: 8px 0 0 18px; padding: 0; }
-    li{ margin: 6px 0; }
-
-    .list{
+    /* Projects list + tags */
+    .projlist{
+      list-style: none;
       margin: 0;
-      padding-left: 18px;
+      padding: 0;
     }
+    .projitem{
+      padding: 8px 6px;
+      border-bottom: 1px solid #d0d0d0;
+    }
+    .projitem:last-child{ border-bottom: none; }
 
-    footer{
-      margin-top: 26px;
-      padding-top: 12px;
-      border-top: 1px solid var(--rule);
-      color: var(--muted);
-      font-size: 13px;
-      display:flex;
-      justify-content: space-between;
-      gap: 10px;
+    .projlink{
+      all: unset;
+      display: block;
+      color: var(--link);
+      text-decoration: underline;
+      cursor: pointer;
+      line-height: 1.35;
+    }
+    .projlink:hover{ text-decoration: none; }
+
+    .tags{
+      margin-top: 6px;
+      display: flex;
       flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag{
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 6px;
+      background: #f4f4f4;
+      border: 1px solid #cfcfcf;
+      border-radius: 3px;
+      color: #111;
     }
 
-    /* MOBILE */
-    @media (max-width: 860px){
+    .backlink{
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--link);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .backlink:hover{ text-decoration: none; }
+
+    /* MOBILE: windows become stacked blocks */
+    @media (max-width: 900px){
       .wrap{ grid-template-columns: 1fr; }
-      aside{ position: relative; top: auto; }
-      main{ padding: 20px 18px 16px; }
-      .grid2{ grid-template-columns: 1fr; }
+      aside{ position: relative; top:auto; }
+      main{ min-height: auto; }
+      .desktop{ min-height: auto; }
+      .win{
+        position: relative;
+        width: 100%;
+        max-width: none;
+        margin: 10px 0;
+        left: 0 !important;
+        top: 0 !important;
+      }
     }
   </style>
 </head>
@@ -205,176 +344,438 @@
 <body>
   <div class="wrap">
 
-    <!-- LEFT FIXED BAR -->
-    <aside>
+    <!-- LEFT -->
+    <aside class="bevel">
       <div class="photo">
         <img src="me.jpeg" alt="Portrait of Santiago Martinez"
-             onerror="this.remove(); this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>Add <b>me.jpeg</b> next to <b>index.html</b><br/>or update the image path.</div>';">
+             onerror="this.remove(); this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>Put <b>me.jpeg</b> next to <b>index.html</b> (case-sensitive).</div>';">
       </div>
 
-      <h1 class="name">Santiago Martinez</h1>
-      <p class="tagline">Mathematics · Physics · Computation</p>
+      <div class="name">Santiago Martinez</div>
+      <div class="tagline">Mathematics · Physics · Computation</div>
 
       <div class="eq">∫_{∂M} ω = ∫_{M} dω</div>
+
       <div class="blocktitle">Affiliations</div>
       <ul class="affil">
-        <li>Université Paris-Saclay <span>(MsC)</span></li>
-        <li>Sapienza University of Rome <span>(MsC)</span></li>
-        <li>Universidad Nacional de Colombia <span>(BsC)</span></li>
+        <li>Université Paris-Saclay <span>(MSc, current)</span></li>
+        <li>Sapienza University of Rome <span>(MSc)</span></li>
+        <li>Universidad Nacional de Colombia <span>(BSc)</span></li>
       </ul>
 
-      <div class="blocktitle">Navigation</div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#cv">CV</a>
-        <a href="#events">Events</a>
-        <a href="#projects">Projects</a>
-        <a href="#interests">Interests</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="blocktitle">Menu</div>
+      <div class="menu">
+        <div class="menu-item" data-open="about"><div class="icon">📄</div><div class="label">About</div></div>
+        <div class="menu-item" data-open="research"><div class="icon">∂</div><div class="label">Research</div></div>
+        <div class="menu-item" data-open="cv"><div class="icon">🗂️</div><div class="label">CV</div></div>
+        <div class="menu-item" data-open="events"><div class="icon">📌</div><div class="label">Events</div></div>
+        <div class="menu-item" data-open="projects"><div class="icon">🧪</div><div class="label">Projects</div></div>
+        <div class="menu-item" data-open="interests"><div class="icon">★</div><div class="label">Interests</div></div>
+        <div class="menu-item" data-open="contact"><div class="icon">✉</div><div class="label">Contact</div></div>
+      </div>
 
       <div class="blocktitle">Links</div>
       <div class="quick">
-        <div><a href="mailto:santiago.martinez-saenz@universite-paris-saclay.fr">Email</a></div>
-        <!-- Add these when you have them -->
-        <!-- <div><a href="CV.pdf">CV (PDF)</a></div> -->
-        <!-- <div><a href="https://github.com/USERNAME">GitHub</a></div> -->
-        <!-- <div><a href="https://www.linkedin.com/in/USERNAME/">LinkedIn</a></div> -->
+        <div><a href="mailto:santiago.martinez-saenz@universite-paris-saclay.fr">santiago.martinez-saenz@universite-paris-saclay.fr</a></div>
+        <!-- <div><a href="CV.pdf">Download CV (PDF)</a></div> -->
       </div>
     </aside>
 
-    <!-- RIGHT CONTENT -->
-    <main>
-      <section id="about">
-        <h2>About</h2>
-        <p>
-          I work at the intersection of mathematics, physics, and computation, with a focus on understanding the mathematical structures underlying physical models and their numerical approximations. My research explores functional-analytic perspectives on stability and limits in modeling, as well as topological and geometric ideas for Learning algorithms. I am passionate about developing clean scientific software and applying mathematical insights to real-world problems in sciences.
-        </p>
-        <p class="small">
-          My favourite mathematician is Georg Cantor, and my favourite physicist is Emmy Noether. I am currently based in Europe and open to research collaborations and PhD opportunities.
-        </p>
-      </section>
+    <!-- RIGHT DESKTOP -->
+    <main class="bevel">
+      <div class="desktop" id="desktop">
 
-      <div class="rule"></div>
-
-      <section id="research">
-        <h2>Research</h2>
-        <div class="grid2">
-          <div class="card">
-            <b>Analysis and operator viewpoints</b>
-            <p class="small">
-              Functional-analytic structure behind models, limits, and stability of estimates.
-            </p>
+        <!-- ABOUT -->
+        <div class="win" id="win-about" style="left: 18px; top: 18px;">
+          <div class="titlebar" data-drag="win-about">
+            <div class="title">📄 About</div>
+            <div class="controls">
+              <button class="btn" data-close="win-about" title="Close">×</button>
+            </div>
           </div>
-          <div class="card">
-            <b>Topology</b>
+          <div class="content">
+            <p>
+              I work at the intersection of mathematics, physics, and computation, with a focus on understanding the mathematical structures
+              underlying physical models and their numerical approximations. My research explores functional-analytic perspectives on stability
+              and limits in modeling, as well as topological and geometric ideas for learning algorithms. I am passionate about developing clean
+              scientific software and applying mathematical insights to real-world problems in the sciences.
+            </p>
             <p class="small">
-              Topological properties and their applications in mathematical and physical models.
+              Favourite mathematician: Georg Cantor. Favourite physicist: Emmy Noether. Based in Europe and open to research collaborations and PhD opportunities.
             </p>
           </div>
         </div>
 
-        <ul>
-          <li>Numerical analysis and structured approximations</li>
-          <li>Geometry/topology in physical modeling</li>
-          <li>Physics-informed ML with constraints</li>
-        </ul>
-      </section>
-
-      <section id="cv">
-        <h2>CV</h2>
-        <p class="small">
-          Add your CV as a PDF in this repo (e.g., <code>CV.pdf</code>) and link it in the sidebar.
-        </p>
-        <ul class="list">
-          <li><b>Education:</b> Université Paris-Saclay (MsC-current), Sapienza (MSc), UNAL (BSc)</li>
-          <li><b>Skills:</b> Math, scientific computing, modeling, simulation workflows</li>
-        </ul>
-      </section>
-
-      <section id="events">
-        <h2>Events and Attendance</h2>
-        <div class="card">
-          <ul class="list">
-            <li><b>2026</b> — JUAS: Joint Universities Accelerators School- ESI Archamps.</li>
-            <li><b>2025</b> — TOSCA: Techniques of Oversight in Scientific project Administration.</li>
-            <li><b>2023</b> — COMHEP: Colombian High Energy Physics School. Speaker.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="projects">
-        <h2>Projects</h2>
-        <div class="grid2">
-          <div class="card">
-            <b>2026-GANIL(master's thesis): Machine learning exploratory modeling of collective effects in High Energy Booster for FCC-ee. Supervisor: Dr. Adnan Ghribi, Dr. Hayg Guler.</b>
-            <p class="small">
-                Exploratory modeling of nonlinear optics and collective effects in the High Energy Booster (HEB) for the Future Circular Collider (FCC-ee) using machine learning techniques, mainly operator learning and surrogate modeling, with a focus on developing predictive models and simulation tools to analyze beam dynamics and optimize accelerator performance, as well as quantify the uncertainties associated with these models.
-            </p>
+        <!-- RESEARCH -->
+        <div class="win" id="win-research" style="left: 46px; top: 70px;">
+          <div class="titlebar" data-drag="win-research">
+            <div class="title">∂ Research</div>
+            <div class="controls">
+              <button class="btn" data-close="win-research" title="Close">×</button>
+            </div>
           </div>
-          <div class="card">
-            <b>2023-IJCLaB : Resolution effects for FCC-ee Compton polarimetry. Supervisor: Dr. Aurèlien Martens.</b>
-            <p class="small">
-                Study of resolution effects in the context of Compton polarimetry for the Future Circular Collider (FCC-ee) by developing a numerical model and simulation framework to analyze the impact of detector resolution on polarization measurements.
-            </p>
-          </div>
-          <div class="card">
-            <b>2023-UNAL(bachelor's thesis): Heavy Neutral Lepton model extension for the standard model, simulation and analysis. Supervisor: Dr. Carlos Sandoval </b>
-            <p class="small">
-                Study of a Heavy Neutral Lepton (HNL) extension to the Standard Model of particle physics, including theoretical modeling of the production mechanisms, couplings to standard neutrinos, numerical simulation, and data analysis of potential experimental signatures in high-energy physics experiments.
-            </p>
-          </div>
-          <div class="card">
-            <b>2025-Sapienza: Low-Rank Decomposition for Phonon-Phonon interactions. Supervisor: Dr. Lorenzo Monacelli.</b>
-            <p class="small">
-                Development of a low-rank decomposition method for supervised Learning approachesto efficiently compute phonon-phonon interactions in materials, with applications to thermal conductivity and material design.
-            </p>
-          </div>
-          <div class="card">
-            <b>2022-UNAL: Computational Differential Geometry for integrable systems in Hamiltonian mechanics. Supervisors: Dr. Iván Contreras, Dr. Nicolás Martinez Alba</b>
-            <p class="small">
-                Implementation of computational tools for differential geometry to analyze integrable systems in Hamiltonian mechanics, including symplectic structures and conserved quantities.
-            </p>
+          <div class="content">
+            <div class="two">
+              <div class="box">
+                <b>Analysis and operator viewpoints</b>
+                <p class="small">Functional-analytic structure behind models, limits, and operator-theoretic perspectives.</p>
+              </div>
+              <div class="box">
+                <b>Topology and geometry</b>
+                <p class="small">Topological and geometric structure in mathematical and physical models.</p>
+              </div>
+            </div>
+            <ul>
+              <li>Numerical analysis and structured approximations</li>
+              <li>Geometry/topology in physical modeling</li>
+              <li>Physics-informed ML with constraints</li>
+            </ul>
           </div>
         </div>
-      </section>
 
-      <section id="interests">
-        <h2>Interests</h2>
-        <ul>
-          <li>Functional analysis, topology, spectral ideas</li>
-          <li>Mathematical physics and modeling</li>
-          <li>Scientific software and clean computation</li>
-        </ul>
-      </section>
+        <!-- CV -->
+        <div class="win" id="win-cv" style="left: 120px; top: 36px;">
+          <div class="titlebar" data-drag="win-cv">
+            <div class="title">🗂️ CV</div>
+            <div class="controls">
+              <button class="btn" data-close="win-cv" title="Close">×</button>
+            </div>
+          </div>
+          <div class="content">
+            <p class="small">Put <b>CV.pdf</b> in the repo and add a link in the left sidebar.</p>
+            <ul>
+              <li><b>Education:</b> Université Paris-Saclay (MSc, current), Sapienza (MSc), UNAL (BSc)</li>
+              <li><b>Skills:</b> scientific computing, modeling, simulation workflows</li>
+            </ul>
+          </div>
+        </div>
 
-      <div class="rule"></div>
+        <!-- EVENTS -->
+        <div class="win" id="win-events" style="left: 140px; top: 170px;">
+          <div class="titlebar" data-drag="win-events">
+            <div class="title">📌 Events</div>
+            <div class="controls">
+              <button class="btn" data-close="win-events" title="Close">×</button>
+            </div>
+          </div>
+          <div class="content">
+            <ul>
+              <li><b>2026</b> — JUAS: Joint Universities Accelerators School, ESI Archamps</li>
+              <li><b>2025</b> — TOSCA: Techniques of Oversight in Scientific Project Administration</li>
+              <li><b>2023</b> — COMHEP: Colombian High Energy Physics School (speaker)</li>
+            </ul>
+          </div>
+        </div>
 
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>
-          Email:
-          <a href="mailto:santiago.martinez-saenz@universite-paris-saclay.fr">santiago.martinez-saenz@universite-paris-saclay.fr</a>
-        </p>
-        <p class="small">
-          Based in Europe. Open to research collaborations and PhD opportunities.
-        </p>
-      </section>
+        <!-- PROJECTS (clickable list opens detail windows) -->
+        <div class="win" id="win-projects" style="left: 190px; top: 90px;">
+          <div class="titlebar" data-drag="win-projects">
+            <div class="title">🧪 Projects</div>
+            <div class="controls">
+              <button class="btn" data-close="win-projects" title="Close">×</button>
+            </div>
+          </div>
+          <div class="content">
+            <p class="small">Click a project to open a detailed window.</p>
 
-      <footer>
-        <div>© <span id="y"></span> Santiago Martinez</div>
-        <div class="small">Last updated: <span id="d"></span></div>
-      </footer>
+            <ul class="projlist">
+              <li class="projitem">
+                <button class="projlink" data-open="proj-ganil">
+                  <b>2026 — GANIL (Master’s thesis)</b> — ML exploratory modeling of collective effects in the HEB for FCC-ee
+                </button>
+                <div class="tags">
+                  <span class="tag">Beam dynamics</span>
+                  <span class="tag">Collective effects</span>
+                  <span class="tag">Operator learning</span>
+                  <span class="tag">Surrogate modeling</span>
+                  <span class="tag">Uncertainty</span>
+                </div>
+              </li>
+
+              <li class="projitem">
+                <button class="projlink" data-open="proj-sapienza">
+                  <b>2025 — Sapienza</b> — Low-rank decomposition for phonon–phonon interactions
+                </button>
+                <div class="tags">
+                  <span class="tag">Low-rank</span>
+                  <span class="tag">Phonons</span>
+                  <span class="tag">Anharmonicity</span>
+                  <span class="tag">Efficient computation</span>
+                </div>
+              </li>
+
+              <li class="projitem">
+                <button class="projlink" data-open="proj-ijclab">
+                  <b>2023 — IJCLab</b> — Resolution effects for FCC-ee Compton polarimetry
+                </button>
+                <div class="tags">
+                  <span class="tag">Polarimetry</span>
+                  <span class="tag">Detector resolution</span>
+                  <span class="tag">Simulation</span>
+                  <span class="tag">Uncertainty propagation</span>
+                </div>
+              </li>
+
+              <li class="projitem">
+                <button class="projlink" data-open="proj-hnl">
+                  <b>2023 — UNAL (BSc thesis)</b> — Heavy Neutral Lepton extension of the Standard Model
+                </button>
+                <div class="tags">
+                  <span class="tag">Beyond SM</span>
+                  <span class="tag">Phenomenology</span>
+                  <span class="tag">Simulation</span>
+                  <span class="tag">Data analysis</span>
+                </div>
+              </li>
+
+              <li class="projitem">
+                <button class="projlink" data-open="proj-diffgeo">
+                  <b>2022 — UNAL</b> — Computational differential geometry for integrable Hamiltonian systems
+                </button>
+                <div class="tags">
+                  <span class="tag">Symplectic geometry</span>
+                  <span class="tag">Integrable systems</span>
+                  <span class="tag">Computation</span>
+                  <span class="tag">Structure</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- INTERESTS -->
+        <div class="win" id="win-interests" style="left: 260px; top: 210px;">
+          <div class="titlebar" data-drag="win-interests">
+            <div class="title">★ Interests</div>
+            <div class="controls">
+              <button class="btn" data-close="win-interests" title="Close">×</button>
+            </div>
+          </div>
+          <div class="content">
+            <ul>
+              <li>Functional analysis, topology, spectral ideas</li>
+              <li>Mathematical physics and modeling</li>
+              <li>Scientific software and clean computation</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="win" id="win-contact" style="left: 320px; top: 40px;">
+          <div class="titlebar" data-drag="win-contact">
+            <div class="title">✉ Contact</div>
+            <div class="controls">
+              <button class="btn" data-close="win-contact" title="Close">×</button>
+            </div>
+          </div>
+          <div class="content">
+            <p>Email: <a href="mailto:santiago.martinez-saenz@universite-paris-saclay.fr">santiago.martinez-saenz@universite-paris-saclay.fr</a></p>
+            <p class="small">Add GitHub / LinkedIn later if you want.</p>
+          </div>
+        </div>
+
+        <!-- DETAIL WINDOWS -->
+        <div class="win" id="win-proj-ganil" style="left: 240px; top: 120px; width: min(880px, calc(100% - 26px));">
+          <div class="titlebar" data-drag="win-proj-ganil">
+            <div class="title">🧪 2026 — GANIL (Master’s thesis)</div>
+            <div class="controls">
+              <button class="btn" data-close="win-proj-ganil" title="Close">×</button>
+            </div>
+          </div>
+          <div class="content">
+            <span class="backlink" data-open="projects">← Back to Projects list</span>
+            <p class="small"><b>Keywords:</b> beam dynamics, nonlinear optics, collective effects, operator learning, surrogate modeling, uncertainty quantification</p>
+            <p><b>Context.</b> The FCC-ee High Energy Booster must balance performance with constraints from nonlinear optics and collective effects. High-fidelity studies can be expensive, motivating reduced models for exploration and sensitivity analysis.</p>
+            <p><b>My contribution.</b> Exploratory machine-learning models aimed at emulating parts of the simulation pipeline, focusing on learning operators/maps rather than only pointwise regression, enabling fast scans and uncertainty-aware studies.</p>
+            <p><b>Methods.</b> Surrogate modeling, operator-learning ideas, simulation-driven datasets, uncertainty-oriented evaluation.</p>
+            <p class="small"><b>Supervisors:</b> Dr. Adnan Ghribi, Dr. Hayg Guler.</p>
+          </div>
+        </div>
+
+        <div class="win" id="win-proj-sapienza" style="left: 280px; top: 160px; width: min(880px, calc(100% - 26px));">
+          <div class="titlebar" data-drag="win-proj-sapienza">
+            <div class="title">📌 2025 — Sapienza</div>
+            <div class="controls">
+              <button class="btn" data-close="win-proj-sapienza" title="Close">×</button>
+            </div>
+          </div>
+          <div class="content">
+            <span class="backlink" data-open="projects">← Back to Projects list</span>
+            <p class="small"><b>Keywords:</b> low-rank decomposition, phonon–phonon interactions, anharmonicity, structured learning, efficiency</p>
+            <p><b>Context.</b> Anharmonic phonon interactions are expensive; structure-exploiting approximations can accelerate downstream quantities in thermal transport workflows.</p>
+            <p><b>My contribution.</b> Developed a low-rank representation approach and supervised-learning workflow to approximate interaction structure efficiently while maintaining physical usefulness.</p>
+            <p><b>Methods.</b> Low-rank factorization, structured representations, physics-aware evaluation.</p>
+            <p class="small"><b>Supervisor:</b> Dr. Lorenzo Monacelli.</p>
+          </div>
+        </div>
+
+        <div class="win" id="win-proj-ijclab" style="left: 300px; top: 210px; width: min(880px, calc(100% - 26px));">
+          <div class="titlebar" data-drag="win-proj-ijclab">
+            <div class="title">📌 2023 — IJCLab</div>
+            <div class="controls">
+              <button class="btn" data-close="win-proj-ijclab" title="Close">×</button>
+            </div>
+          </div>
+          <div class="content">
+            <span class="backlink" data-open="projects">← Back to Projects list</span>
+            <p class="small"><b>Keywords:</b> Compton polarimetry, detector resolution, simulation workflow, uncertainty propagation, FCC-ee</p>
+            <p><b>Context.</b> Polarization measurements depend on instrument response. Resolution effects reshape observed spectra and can bias reconstructed observables if not modeled carefully.</p>
+            <p><b>My contribution.</b> Built a numerical model and simulation workflow to quantify resolution effects and propagate them into polarization observables, enabling sensitivity studies and design trade-offs.</p>
+            <p><b>Methods.</b> End-to-end simulation, response modeling, analysis pipelines, uncertainty propagation.</p>
+            <p class="small"><b>Supervisor:</b> Dr. Aurélien Martens.</p>
+          </div>
+        </div>
+
+        <div class="win" id="win-proj-hnl" style="left: 260px; top: 90px; width: min(880px, calc(100% - 26px));">
+          <div class="titlebar" data-drag="win-proj-hnl">
+            <div class="title">📌 2023 — UNAL (BSc thesis)</div>
+            <div class="controls">
+              <button class="btn" data-close="win-proj-hnl" title="Close">×</button>
+            </div>
+          </div>
+          <div class="content">
+            <span class="backlink" data-open="projects">← Back to Projects list</span>
+            <p class="small"><b>Keywords:</b> Heavy Neutral Leptons, beyond Standard Model, production mechanisms, couplings, simulation, analysis</p>
+            <p><b>Context.</b> HNL extensions address open questions beyond the Standard Model and motivate parameter-dependent experimental signatures.</p>
+            <p><b>My contribution.</b> Studied an HNL scenario, implemented simulation and analysis steps to explore signatures across parameter space, and organized results into a reproducible workflow.</p>
+            <p><b>Methods.</b> Theoretical modeling, numerical simulation, data analysis workflows.</p>
+            <p class="small"><b>Supervisor:</b> Dr. Carlos Sandoval.</p>
+          </div>
+        </div>
+
+        <div class="win" id="win-proj-diffgeo" style="left: 220px; top: 250px; width: min(880px, calc(100% - 26px));">
+          <div class="titlebar" data-drag="win-proj-diffgeo">
+            <div class="title">📌 2022 — UNAL</div>
+            <div class="controls">
+              <button class="btn" data-close="win-proj-diffgeo" title="Close">×</button>
+            </div>
+          </div>
+          <div class="content">
+            <span class="backlink" data-open="projects">← Back to Projects list</span>
+            <p class="small"><b>Keywords:</b> differential geometry, symplectic structure, integrable systems, Hamiltonian mechanics, computation</p>
+            <p><b>Context.</b> Integrable Hamiltonian systems are organized by symplectic geometry and invariants. Making structure explicit computationally helps verify properties and explore examples.</p>
+            <p><b>My contribution.</b> Implemented computational tools aligned with differential-geometric structure to study symplectic objects and conserved quantities, connecting theory to explicit computations.</p>
+            <p><b>Methods.</b> Geometry-aware computation, structure-preserving ideas, symbolic/numeric workflows.</p>
+            <p class="small"><b>Supervisors:</b> Dr. Iván Contreras, Dr. Nicolás Martinez Alba.</p>
+          </div>
+        </div>
+
+      </div>
     </main>
 
   </div>
 
   <script>
-    const now = new Date();
-    document.getElementById("y").textContent = now.getFullYear();
-    document.getElementById("d").textContent =
-      now.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"2-digit" });
+    const desktop = document.getElementById("desktop");
+    let z = 10;
+
+    function bringToFront(win){
+      z += 1;
+      win.style.zIndex = z;
+      document.querySelectorAll(".win").forEach(w => w.classList.remove("active"));
+      win.classList.add("active");
+    }
+
+    function openWin(name){
+      const win = document.getElementById("win-" + name);
+      if(!win) return;
+      win.classList.add("open");
+      bringToFront(win);
+
+      // Nudge into view if it spawns off-screen
+      const rect = win.getBoundingClientRect();
+      const desk = desktop.getBoundingClientRect();
+      if(rect.right > desk.right - 6) win.style.left = "18px";
+      if(rect.bottom > desk.bottom - 6) win.style.top = "18px";
+    }
+
+    function closeWin(id){
+      const win = document.getElementById(id);
+      if(!win) return;
+      win.classList.remove("open");
+      win.classList.remove("active");
+    }
+
+    // Open windows from ANY element with data-open="name"
+    document.querySelectorAll("[data-open]").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        openWin(el.dataset.open);
+      });
+    });
+
+    // Close buttons
+    document.querySelectorAll("[data-close]").forEach(btn=>{
+      btn.addEventListener("click", (e)=>{
+        e.stopPropagation();
+        closeWin(btn.dataset.close);
+      });
+    });
+
+    // Focus on click
+    document.querySelectorAll(".win").forEach(win=>{
+      win.addEventListener("mousedown", ()=> bringToFront(win));
+      win.addEventListener("touchstart", ()=> bringToFront(win), {passive:true});
+    });
+
+    // Dragging
+    let drag = null;
+
+    function startDrag(e, id){
+      const win = document.getElementById(id);
+      if(!win) return;
+      bringToFront(win);
+
+      const startX = (e.touches ? e.touches[0].clientX : e.clientX);
+      const startY = (e.touches ? e.touches[0].clientY : e.clientY);
+
+      const rect = win.getBoundingClientRect();
+      const desk = desktop.getBoundingClientRect();
+
+      drag = {
+        win,
+        dx: startX - rect.left,
+        dy: startY - rect.top,
+        desk
+      };
+
+      e.preventDefault();
+    }
+
+    function moveDrag(e){
+      if(!drag) return;
+
+      const x = (e.touches ? e.touches[0].clientX : e.clientX);
+      const y = (e.touches ? e.touches[0].clientY : e.clientY);
+
+      let left = x - drag.dx - drag.desk.left;
+      let top  = y - drag.dy - drag.desk.top;
+
+      // clamp so it doesn’t get lost
+      const maxLeft = drag.desk.width  - 80;
+      const maxTop  = drag.desk.height - 40;
+
+      left = Math.max(0, Math.min(left, maxLeft));
+      top  = Math.max(0, Math.min(top, maxTop));
+
+      drag.win.style.left = left + "px";
+      drag.win.style.top  = top  + "px";
+    }
+
+    function endDrag(){ drag = null; }
+
+    document.querySelectorAll(".titlebar[data-drag]").forEach(tb=>{
+      tb.addEventListener("mousedown", (e)=> startDrag(e, tb.dataset.drag));
+      tb.addEventListener("touchstart", (e)=> startDrag(e, tb.dataset.drag), {passive:false});
+    });
+
+    window.addEventListener("mousemove", moveDrag);
+    window.addEventListener("mouseup", endDrag);
+    window.addEventListener("touchmove", moveDrag, {passive:false});
+    window.addEventListener("touchend", endDrag);
+
+    // open a default window
+    openWin("about");
   </script>
 </body>
 </html>
