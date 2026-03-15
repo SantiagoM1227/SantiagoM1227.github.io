@@ -11,6 +11,8 @@
       --sidebar-w: 360px;
       --gadget-h: 430px;
       --menu-h: 360px;
+      --design-w: 1440;
+      --design-h: 900;
 
       --xp-blue-1:#2a62d2;
       --xp-blue-2:#1f4aa8;
@@ -184,14 +186,36 @@
       filter: drop-shadow(0 8px 10px rgba(0,0,0,0.18));
     }
 
+   .gadget-note{
+    min-width: 0;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    padding-top: 2px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 6px;
+    }
+    .gadget-note::-webkit-scrollbar{
+    width: 10px;
+    }
+
+    .gadget-note::-webkit-scrollbar-track{
+      background: rgba(255,255,255,0.45);
+      border-radius: 10px;
+    }
+
+    .gadget-note::-webkit-scrollbar-thumb{
+      background: linear-gradient(180deg, #c7d9f8, #8fb1ea);
+      border: 1px solid #6f94d6;
+      border-radius: 10px;
+    }
+
     .gadget-note{
-      min-width: 0;
-      align-self: start;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 8px;
-      padding-top: 2px;
+      scrollbar-width: thin;
+      scrollbar-color: #8fb1ea rgba(255,255,255,0.45);
     }
 
     .speech{
@@ -812,8 +836,14 @@
       .side-panel .content{ height: auto; }
 
       .gadget-body{
-        grid-template-columns: 140px 1fr;
-      }
+        height: 100%;
+        padding: 40px 12px 12px;
+        display: grid;
+        grid-template-columns: 176px 1fr;
+        gap: 14px;
+        align-items: stretch;
+        min-height: 0;
+       }
 
       .clippy-shell{
         width: 140px;
@@ -824,7 +854,9 @@
 </head>
 
 <body>
-  <div id="desktop">
+  <div id="viewport">
+    <div id="scene">
+      <div id="desktop">
     <div class="left-rail">
       <aside class="gadget" aria-label="Clippy style photo gadget">
         <div class="gadget-body">
@@ -846,11 +878,12 @@
                 </a>
                 <a class="toolchip" style="display:inline-flex;align-items:center;gap:12px;" href="https://www.linkedin.com/in/santiago-martinez-saenz" target="_blank" rel="noopener noreferrer">
                 <img src="linkedin.png" alt="LinkedIn" class="menu-icon" style="width:28px;height:28px;">
-              <span>LinkedIn</span>
-              <a class = "toolchip" style="display:inline-flex;align-items:center;gap:12px;" href="mailto:santiago.martinez-saenz@universite-paris-saclay.fr" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn</span>
+                </a>
+                <a class = "toolchip" style="display:inline-flex;align-items:center;gap:12px;" href="mailto:santiago.martinez-saenz@universite-paris-saclay.fr" target="_blank" rel="noopener noreferrer">
                 <img src="wlm1.png" alt="Contact" class="menu-icon" style="width:28px;height:28px;">
                 <span>Mail</span>
-              </a>
+                </a>
             </div>
           </div>
         </div>
@@ -1213,6 +1246,7 @@
 </div>
     </div>
   </div>
+</div>
 
   <div id="taskbar">
     <div id="startBtn">
